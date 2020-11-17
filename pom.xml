@@ -1,0 +1,133 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>example.project.maven</groupId>
+  <artifactId>MavenConfigExample</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  <description>Maven config example</description>
+
+  <name>MavenConfigExample</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  
+  <profiles>
+
+	<profile>
+	
+		<id>profile1</id>
+	
+		<activation>
+			<activeByDefault>false</activeByDefault>
+			<jdk>1.8</jdk>	
+			<os>
+				<name>Windows XP</name>
+				<family>Windows</family>
+				<arch>x86</arch>
+				<version>5.1.2600</version>
+			</os>
+			<property>
+				<name>SYSTEM_PROPERTY</name>
+				<value>1</value>
+			</property>
+			<file>
+				<exists>${basedir}/file1</exists>
+				<missing>${basedir}/file2</missing>
+			</file>
+		</activation>
+		
+		<repositories>
+			<repository>
+				<id>repo1</id>
+				<name>repository1</name>
+				<releases>
+					<enabled>false</enabled>
+					<updatePolicy>always</updatePolicy>
+					<checksumPolicy>warn</checksumPolicy>
+				</releases>
+				<snapshots>
+					<enabled>true</enabled>
+					<updatePolicy>never</updatePolicy>
+					<checksumPolicy>fail</checksumPolicy>
+				</snapshots>
+				<url>http://snapshots.maven.codehaus.org/maven2</url>
+				<layout>default</layout>
+			</repository>
+		</repositories>
+	
+		<pluginRepositories></pluginRepositories>
+		<properties>
+			<javaHome>${java.home}</javaHome>
+		</properties>
+		<dependencies>
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-all</artifactId>
+				<version>1.10.19</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+		<dependencyManagement></dependencyManagement>
+		<modules>
+			<module></module>
+		</modules>
+		<build></build>
+		<distributionManagement>
+			<downloadUrl>http://mojo.codehaus.org/my-project</downloadUrl>
+			<relocation>
+				<groupId></groupId>
+				<artifactId></artifactId>
+				<message></message>
+				<version></version>
+			</relocation>
+			<repository>
+				<id>repo</id>
+				<layout>default</layout>
+				<name>Main Repository</name>
+				<uniqueVersion>true</uniqueVersion> 
+				<url>some url</url>
+			</repository>
+			<snapshotRepository>
+				<id>snapRep</id>
+				<layout>legacy</layout>
+				<name>Snapshot Repository</name>
+				<uniqueVersion>true</uniqueVersion>
+				<url>some url</url>
+			</snapshotRepository>
+			<status>deployed</status>
+			<site>
+				<id>siteId</id>
+				<name>Site </name>
+				<url>some url</url>
+			</site>
+		</distributionManagement>
+		
+		<reporting>
+			<excludeDefaults></excludeDefaults>
+			<outputDirectory></outputDirectory>
+			<plugins></plugins>
+		</reporting>
+		<reports>
+			<project>
+			</project>
+		</reports>
+		
+	</profile>
+	
+  </profiles>
+  
+
+</project>
